@@ -16,6 +16,9 @@
     <%= form.text_field :patient_name %>
   </div>
 
+  <%= form.collection_select :doctor_ids, Doctor.order(:doctor_name), :id, :doctor_name, include_blank: true %>
+
+
   <div class="actions">
     <%= form.submit %>
   </div>

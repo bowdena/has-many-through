@@ -3,7 +3,9 @@
 This is a very simple Proof of concept build
 for has_many, through in rails 6 because I often 
 forget exactly how to make this work as I trip
-over the view component of the scaffold.
+over the view component of the scaffold.  This is a 
+super simple app and uses sqllite so should
+work just about anywhere.
 
 I rediscovered this resource which helped to put
 me on the right path: https://learn.co/lessons/has-many-through-forms-rails
@@ -59,4 +61,23 @@ items to pass through
 def doctor_params
       params.require(:doctor).permit(:doctor_name, patient_ids:[])
 end
+```
+
+Now, the patients view is setup slightly 
+differently and uses a select object to 
+update the values to a single entry
+
+Update the view and add the following to the 
+patients _form file
+```ruby
+# Only allow a list of trusted parameters through.
+    <%= form.collection_select :doctor_ids, Doctor.order(:doctor_name), :id, :doctor_name, include_blank: true %>
+```
+
+Update the patient controller:
+```ruby
+# Only allow a list of trusted parameters through.
+    def patient_params
+      params.require(:patient).permit(:patient_name, :doctor_ids)
+    end
 ```
