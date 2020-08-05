@@ -1,0 +1,24 @@
+<%= form_with(model: doctor, local: true) do |form| %>
+  <% if doctor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
+
+      <ul>
+        <% doctor.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :doctor_name %>
+    <%= form.text_field :doctor_name %>
+  </div>
+
+  <%= form.collection_check_boxes :patient_ids, Patient.all, :id, :patient_name %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
