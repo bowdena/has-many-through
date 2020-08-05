@@ -7,3 +7,7 @@ one:
 two:
   doctor: two
   patient: two
+
+three:
+  doctor: one
+  patient: two

@@ -3,6 +3,7 @@ require 'test_helper'
 class DoctorsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @doctor = doctors(:one)
+    @doctor2 = doctors(:two)
   end
 
   test "should get index" do
@@ -44,5 +45,14 @@ class DoctorsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to doctors_url
+  end
+
+  test 'valid user' do
+    doc = Doctor.new(doctor_name: 'Dr Strange')
+    assert doc.valid?
+  end
+
+  test '#patients' do
+    assert_equal 2, @doctor.appointments.size
   end
 end

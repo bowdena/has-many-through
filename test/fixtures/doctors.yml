@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  doctor_name: MyString
+  doctor_name: Dr Strangelove
 
 two:
-  doctor_name: MyString
+  doctor_name: Dr Jekyl

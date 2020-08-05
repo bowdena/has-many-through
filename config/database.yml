@@ -19,6 +19,9 @@ development:
 test:
   <<: *default
   database: db/test.sqlite3
+  #https://stackoverflow.com/questions/7154664/ruby-sqlite3busyexception-database-is-locked
+  pool: 50
+  timeout: 5000
 
 production:
   <<: *default
